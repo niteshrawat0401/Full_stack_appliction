@@ -14,4 +14,14 @@ authRouter.post("/signup",(req,res)=>{
     })
 })
 
+authRouter.post("/login",(req,res)=>{
+    const {userName, password}= req.body;
+    const vaildUser= User.find({userName,password});
+    if(vaildUser.length<1 || !vaildUser){
+        return res.status(401).send({message: "Invalid credentials"});
+    }
+    return res.status(201).send({message: "Vaild User"});
+
+})
+
 module.exports= authRouter
