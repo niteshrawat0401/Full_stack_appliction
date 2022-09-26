@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import axios from "axios"
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 let initObj = {
   userName: "",
@@ -11,19 +12,22 @@ let initObj = {
 
 export const Signup = () => {
   const [signData, setSignData] = useState(initObj);
+  const navigate = useNavigate();
   const handleonChange = (e) => {
     const { name, value } = e.target;
     setSignData({ ...signData, [name]: value });
   };
   const handleSubmit = (e) => {
-    e.preventDefault()
-    axios.post(`http://localhost:8080/auth/signup`,signData)
-    .then((res)=>{
-      console.log("data",res.data);
+    e.preventDefault();
+    axios
+      .post(`http://localhost:8080/auth/signup`, signData)
+      .then((res) => {
+        console.log("data", res.data);
 
-      // setSignData(res.data)
-    })
-    .catch((e)=>console.log(e))
+        setSignData(initObj);
+        alert("Sign in Successfull");
+      })
+      .catch((e) => console.log(e));
   };
   return (
     <div>
@@ -60,12 +64,12 @@ export const Signup = () => {
             type="number"
             name="mobile"
             placeholder="Number"
-            value={signData.number}
+            value={signData.mobile}
             onChange={handleonChange}
             required
           />
           <br />
-          <input type="submit" value="Sign UP"/>
+          <input type="submit" value="Sign UP" />
         </form>
       </div>
     </div>
