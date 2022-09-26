@@ -21,16 +21,20 @@ export const Login = () => {
       .post(`http://localhost:8080/auth/login`, loginData)
       .then((res) => {
         console.log(res.data);
-        setLoginData(initData);
+        setLoginData({...initData});
         alert("Sucessfull login");
       })
-      .catch((e) => console.log(e));
+      .catch((e) =>{
+        if(e.res.status === 401){
+            alert("Invaild Credentials")
+        }
+      });
   };
 
   return (
     <div>
       <div>
-        <form action="" onSubmit={handleLogin}>
+        <form onSubmit={handleLogin}>
           <input
             type="text"
             name="userName"
@@ -49,7 +53,7 @@ export const Login = () => {
             required
           />
           <br />
-          <input type="submit" value="submit" />
+          <input type="submit" value="Login" />
         </form>
       </div>
     </div>
