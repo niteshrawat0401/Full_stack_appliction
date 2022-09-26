@@ -3,10 +3,10 @@ import { useState } from "react";
 import axios from "axios"
 
 let initObj = {
-  username: "",
-  password: "",
+  userName: "",
+  passWord: "",
   email: "",
-  number: "",
+  mobile: "",
 };
 
 export const Signup = () => {
@@ -19,7 +19,8 @@ export const Signup = () => {
     e.preventDefault()
     axios.post(`http://localhost:8080/auth/signup`,signData)
     .then((res)=>{
-      console.log("data",res.data)
+      console.log("data",res.data);
+
       // setSignData(res.data)
     })
     .catch((e)=>console.log(e))
@@ -30,18 +31,18 @@ export const Signup = () => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            name="username"
+            name="userName"
             placeholder="UserName"
-            value={signData.username}
+            value={signData.userName}
             onChange={handleonChange}
             required
           />
           <br />
           <input
             type="password"
-            name="password"
+            name="passWord"
             placeholder="Password"
-            value={signData.password}
+            value={signData.passWord}
             onChange={handleonChange}
             required
           />
@@ -57,7 +58,7 @@ export const Signup = () => {
           <br />
           <input
             type="number"
-            name="number"
+            name="mobile"
             placeholder="Number"
             value={signData.number}
             onChange={handleonChange}
