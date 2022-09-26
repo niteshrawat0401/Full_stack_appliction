@@ -16,6 +16,7 @@ authRouter.post("/signup", (req, res) => {
   });
 });
 
+// login
 authRouter.post("/login", (req, res) => {
   const { userName, password } = req.body;
   const vaildUser = User.find({ userName, password });

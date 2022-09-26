@@ -1,8 +1,12 @@
 const express = require("express");
 const authRouter= require("./Routes/auth")
 const connect= require("./db/db")
+const cors= require("cors");
 
 const app = express();
+app.use(cors({
+  origin: ["http://localhost:3000"]
+}))
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

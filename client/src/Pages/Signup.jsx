@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios"
 
 let initObj = {
-  name: "",
+  username: "",
   password: "",
   email: "",
   number: "",
@@ -14,16 +15,24 @@ export const Signup = () => {
     const { name, value } = e.target;
     setSignData({ ...signData, [name]: value });
   };
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post(`http://localhost:8080/auth/signup`,signData)
+    .then((res)=>{
+      console.log("data",res.data)
+      // setSignData(res.data)
+    })
+    .catch((e)=>console.log(e))
+  };
   return (
     <div>
       <div>
-        <form action="" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="username"
             placeholder="UserName"
-            id=""
+            value={signData.username}
             onChange={handleonChange}
             required
           />
@@ -32,7 +41,7 @@ export const Signup = () => {
             type="password"
             name="password"
             placeholder="Password"
-            id=""
+            value={signData.password}
             onChange={handleonChange}
             required
           />
@@ -41,7 +50,7 @@ export const Signup = () => {
             type="text"
             name="email"
             placeholder="Email"
-            id=""
+            value={signData.email}
             onChange={handleonChange}
             required
           />
@@ -50,12 +59,12 @@ export const Signup = () => {
             type="number"
             name="number"
             placeholder="Number"
-            id=""
+            value={signData.number}
             onChange={handleonChange}
             required
           />
           <br />
-          <input type="submit" value="Sign UP" name="" id="" required />
+          <input type="submit" value="Sign UP"/>
         </form>
       </div>
     </div>
