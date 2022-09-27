@@ -15,7 +15,7 @@ app.use("/auth", authRouter)
 
 app.get("/", (req, res) => res.send("Hello Nitesh"));
 
-app.listen(8080, () => {
-  connect
+app.listen(8080, async() => {
+  await connect
   console.log("Server started on http://localhost:8080");
 });

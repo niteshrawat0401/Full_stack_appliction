@@ -1,0 +1,17 @@
+.whole_container{
+    /* border: 1px solid red; */
+    width: 99%;
+    margin: auto;
+    margin-top: 2px;
+}
+
+.navbar_div{
+    border: 1px solid red;
+    height: 4rem;
+    width: 98%;
+    margin: auto;
+    margin-top: 1rem;
+    border-radius: 5px;
+    border: 1px solid #434343;
+    
+}
