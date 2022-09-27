@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import "./module.css/Login.css"
 
 let initData = {
   userName: "",
@@ -33,9 +34,10 @@ export const Login = () => {
 
   return (
     <div>
-      <div>
+      <div className="login_main_container">
         <form onSubmit={handleLogin}>
-          <input
+          <h3>Login</h3>
+          <input className="inpu1"
             type="text"
             name="userName"
             placeholder="UserName"
@@ -44,7 +46,7 @@ export const Login = () => {
             required
           />
           <br />
-          <input
+          <input className="inpu2"
             type="password"
             name="passWord"
             placeholder="Password"
@@ -53,7 +55,7 @@ export const Login = () => {
             required
           />
           <br />
-          <input type="submit" value="Login" />
+          <input className="inpu3" type="submit" value="Login" />
         </form>
       </div>
     </div>

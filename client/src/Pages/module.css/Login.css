@@ -1,0 +1,35 @@
+.login_main_container{
+    border: 2px solid #434343;
+    height: 15rem;
+    width: 20%;
+    margin: auto;
+    margin-top: 3rem;
+    border-radius: 6px;
+}
+.inpu1{
+    width: 70%;
+    height: 2rem;
+    border-radius: 5px;
+    margin-top: 0rem;
+    border: 1px solid #d1c295;
+}
+.inpu2{
+    width: 70%;
+    height: 2rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    border: 1px solid #d1c295;
+}
+
+.inpu3{
+    width: 70%;
+    height: 2.2rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    color: #ecf5f5;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #18c683;
+    border: none;
+}
