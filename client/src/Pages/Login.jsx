@@ -49,7 +49,7 @@ export const Login = () => {
           setInvalidalert(true);
           setTimeout(() => {
             setInvalidalert(false);
-          }, 2000);
+          }, 3000);
         }
       });
   };
@@ -58,7 +58,7 @@ export const Login = () => {
     <div>
       <div className="login_main_container">
         <form onSubmit={handleLogin}>
-          <h3>Login</h3>
+          <h3 style={{ fontWeight: "bold" }}>Login</h3>
           <input
             className="inpu1"
             type="text"
@@ -85,7 +85,6 @@ export const Login = () => {
             >
               {showPassword ? (
                 <img src={eyeimg2} alt="eyehide" />
-               
               ) : (
                 <img src={eyeimg1} alt="eye1" />
               )}
@@ -94,24 +93,26 @@ export const Login = () => {
           <br />
           <input className="inpu3" type="submit" value="Login" />
         </form>
-        {alert ? (
-          <Alert
-            status="success"
-            variant="subtle"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-            textAlign="center"
-            height="200px"
-          >
-            <AlertIcon boxSize="40px" mr={0} />
-            <AlertTitle mt={4} mb={1} fontSize="lg">
-              Successfull Login
-            </AlertTitle>
-          </Alert>
-        ) : (
-          <h1></h1>
-        )}
+        <div style={{ marginTop: "1.5rem" }}>
+          {alert ? (
+            <Alert
+              status="success"
+              variant="subtle"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+              textAlign="center"
+              height="150px"
+            >
+              <AlertIcon boxSize="40px" mr={0} />
+              <AlertTitle mt={4} mb={1} fontSize="lg">
+                Successfull Login
+              </AlertTitle>
+            </Alert>
+          ) : (
+            <h1></h1>
+          )}
+        </div>
         {invalidalert ? (
           <Alert status="error">
             <AlertIcon />
