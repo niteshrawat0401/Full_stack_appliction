@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import "./module.css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ let initData = {
   passWord: "",
 };
 
-export const Login = () => {
+export const Login = ({ isUserisAuthenticated }) => {
   const [loginData, setLoginData] = useState(initData);
   const [alert, setAlert] = useState(false);
   const [invalidalert, setInvalidalert] = useState(false);
@@ -41,6 +41,9 @@ export const Login = () => {
         setAlert(true);
         setTimeout(() => {
           setAlert(false);
+
+
+          isUserisAuthenticated(true);
           navigate("/");
         }, 2000);
       })
@@ -92,10 +95,14 @@ export const Login = () => {
           </div>
           <br />
           <input className="inpu3" type="submit" value="Login" />
-         
         </form>
-        <div style={{paddingTop:"2px"}}><span>Create a new account </span><Link style={{color:"blue",fontSize:"15px"}} to={"/signup"}>Sign up</Link></div>
-       
+        <div style={{ paddingTop: "2px" }}>
+          <span>Create a new account </span>
+          <Link style={{ color: "blue", fontSize: "15px" }} to={"/signup"}>
+            Sign up
+          </Link>
+        </div>
+
         <div style={{ marginTop: "1.5rem" }}>
           {alert ? (
             <Alert
