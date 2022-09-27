@@ -19,6 +19,8 @@ export const Login = () => {
   const [loginData, setLoginData] = useState(initData);
   const [alert, setAlert] = useState(false);
   const [invalidalert, setInvalidalert] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
   const navigate = useNavigate();
 
   const handlechanaged = (e) => {
@@ -39,14 +41,14 @@ export const Login = () => {
           navigate("/");
         }, 2000);
       })
-      .catch((err)=>{
-          if(err.response.status === 401){
-            setInvalidalert(true);
-            setTimeout(() => {
-              setInvalidalert(false);
-            }, 2000);
-          }
-      })
+      .catch((err) => {
+        if (err.response.status === 401) {
+          setInvalidalert(true);
+          setTimeout(() => {
+            setInvalidalert(false);
+          }, 2000);
+        }
+      });
   };
 
   return (
@@ -94,14 +96,14 @@ export const Login = () => {
         ) : (
           <h1></h1>
         )}
-    {
-     invalidalert ? <Alert status='error'>
-      <AlertIcon />
-      <AlertTitle>Incorrect Credentials</AlertTitle>
-    </Alert>
-    : <h1></h1>
-    } 
-
+        {invalidalert ? (
+          <Alert status="error">
+            <AlertIcon />
+            <AlertTitle>Incorrect Credentials</AlertTitle>
+          </Alert>
+        ) : (
+          <h1></h1>
+        )}
       </div>
     </div>
   );
