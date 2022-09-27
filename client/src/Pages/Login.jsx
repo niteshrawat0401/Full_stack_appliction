@@ -42,7 +42,6 @@ export const Login = ({ isUserisAuthenticated }) => {
         setTimeout(() => {
           setAlert(false);
 
-
           isUserisAuthenticated(true);
           navigate("/");
         }, 2000);
