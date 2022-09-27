@@ -25,11 +25,25 @@
     width: 70%;
     height: 2.2rem;
     border-radius: 5px;
-    margin-top: 2rem;
+    margin-top: 1rem;
     color: #ecf5f5;
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
     background-color: #18c683;
     border: none;
+}
+
+.show_hide_password_div{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+}
+
+.show_hide_password img{
+width: 21px;
+position: absolute;
+top: 60%;
+left: 76%;
 }
