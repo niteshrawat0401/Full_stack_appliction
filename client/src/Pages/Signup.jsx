@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./module.css/Signup.css"
 
 let initObj = {
   userName: "",
@@ -31,9 +32,11 @@ export const Signup = () => {
   };
   return (
     <div>
-      <div>
+      <div className="signup_main_cont">
+      <h3>Sign Up</h3>
         <form onSubmit={handleSubmit}>
-          <input
+          
+          <input className="inp1"
             type="text"
             name="userName"
             placeholder="UserName"
@@ -42,7 +45,7 @@ export const Signup = () => {
             required
           />
           <br />
-          <input
+          <input className="inp2"
             type="password"
             name="passWord"
             placeholder="Password"
@@ -51,7 +54,7 @@ export const Signup = () => {
             required
           />
           <br />
-          <input
+          <input className="inp3"
             type="text"
             name="email"
             placeholder="Email"
@@ -60,7 +63,7 @@ export const Signup = () => {
             required
           />
           <br />
-          <input
+          <input className="inp4"
             type="number"
             name="mobile"
             placeholder="Number"
@@ -69,7 +72,7 @@ export const Signup = () => {
             required
           />
           <br />
-          <input type="submit" value="Sign UP" />
+          <input className="inp5" type="submit" value="Sign UP" />
         </form>
       </div>
     </div>
