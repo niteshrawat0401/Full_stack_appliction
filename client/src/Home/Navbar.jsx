@@ -10,7 +10,6 @@ export const Navbar = () => {
             <Link to={"/product"}>Product</Link>
             <Link to={"/cart"}>Cart</Link>
             <Link to={"/login"}>Login</Link>
-            <Link to={"/signup"}>Sign Up</Link>
         </div>
     </div>
   )

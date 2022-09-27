@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import "./module.css/Login.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import eyeimg1 from "./eyeimage/eyeimg1.jpeg";
 import eyeimg2 from "./eyeimage/eyeimg2.jpeg";
 
@@ -92,7 +92,10 @@ export const Login = () => {
           </div>
           <br />
           <input className="inpu3" type="submit" value="Login" />
+         
         </form>
+        <div style={{paddingTop:"2px"}}><span>Create a new account </span><Link style={{color:"blue",fontSize:"15px"}} to={"/signup"}>Sign up</Link></div>
+       
         <div style={{ marginTop: "1.5rem" }}>
           {alert ? (
             <Alert

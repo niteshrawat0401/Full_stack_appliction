@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import "./module.css/Signup.css"
+
 
 let initObj = {
   userName: "",
@@ -75,6 +76,7 @@ export const Signup = () => {
           <br />
           <input className="inp5" type="submit" value="Sign UP" />
         </form>
+        <div style={{paddingTop:"2px"}}><span>Already have account </span><Link style={{color:"blue",fontSize:"15px"}} to={"/login"}>Login</Link></div>
       </div>
     </div>
   );
