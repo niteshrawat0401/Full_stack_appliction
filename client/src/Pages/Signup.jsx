@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import "./module.css/Signup.css";
+import "./style.module.css/Signup.css";
 
 let initObj = {
   userName: "",
