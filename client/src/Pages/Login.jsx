@@ -88,7 +88,7 @@ export const Login = ({ isUserisAuthenticated }) => {
               {showPassword ? (
                 <img src={eyeimg2} alt="eyehide" />
               ) : (
-                <img src={eyeimg1} alt="eye1" />
+                <img src={eyeimg1} alt="eyeshow" />
               )}
             </span>
           </div>
