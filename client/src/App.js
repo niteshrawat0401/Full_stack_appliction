@@ -36,7 +36,7 @@ function App() {
         <Route
           path="/cart"
           element={<PrivateRoute isAuthenticated={isAuthenticated} />}
-          /* if isAuthenticated is true then open home page */
+          /* if isAuthenticated is true then open cart page */
         >
           <Route path="/cart" element={<Cart />} />
         </Route>
