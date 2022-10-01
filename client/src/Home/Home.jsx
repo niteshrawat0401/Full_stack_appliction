@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
 export const Home = () => {
   return (
     <>
-    <div className='whole_container'>
-      Home
-    </div>
+      <div className="whole_container">Home</div>
     </>
-  )
-}
+  );
+};
