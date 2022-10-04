@@ -5,6 +5,7 @@ import "./style.module.css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import eyeimg1 from "./eyeimage/eyeimg1.jpeg";
 import eyeimg2 from "./eyeimage/eyeimg2.jpeg";
+import { UserContext } from "../App";
 
 import {
   Alert,
@@ -18,11 +19,13 @@ let initData = {
   passWord: "",
 };
 
-export const Login = ({ isUserisAuthenticated }) => {
+export const Login = ({ isUserisAuthenticated, logout,setLogout }) => {
   const [loginData, setLoginData] = useState(initData);
   const [alert, setAlert] = useState(false);
   const [invalidalert, setInvalidalert] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const {state,dispatch} =useContext(UserContext)
+  
 
   const navigate = useNavigate();
 
@@ -41,9 +44,12 @@ export const Login = ({ isUserisAuthenticated }) => {
         setAlert(true);
         setTimeout(() => {
           setAlert(false);
-
+         
           isUserisAuthenticated(true);
-          navigate("/");
+          if(dispatch({type:"USER", payload:true })){
+               navigate("/");
+          }
+         
         }, 2000);
       })
       .catch((err) => {
@@ -134,3 +140,4 @@ export const Login = ({ isUserisAuthenticated }) => {
     </div>
   );
 };
+// 9582031421
