@@ -19,13 +19,12 @@ let initData = {
   passWord: "",
 };
 
-export const Login = ({ isUserisAuthenticated, logout,setLogout }) => {
+export const Login = ({ isUserisAuthenticated, logout, setLogout }) => {
   const [loginData, setLoginData] = useState(initData);
   const [alert, setAlert] = useState(false);
   const [invalidalert, setInvalidalert] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const {state,dispatch} =useContext(UserContext)
-  
+  const { state, dispatch } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -33,7 +32,7 @@ export const Login = ({ isUserisAuthenticated, logout,setLogout }) => {
     const { name, value } = e.target;
     setLoginData({ ...loginData, [name]: value });
   };
-
+  // post login
   const handleLogin = (e) => {
     e.preventDefault();
     axios
@@ -44,12 +43,11 @@ export const Login = ({ isUserisAuthenticated, logout,setLogout }) => {
         setAlert(true);
         setTimeout(() => {
           setAlert(false);
-         
+
           isUserisAuthenticated(true);
-          if(dispatch({type:"USER", payload:true })){
-               navigate("/");
+          if (dispatch({ type: "USER", payload: true })) {
+            navigate("/");
           }
-         
         }, 2000);
       })
       .catch((err) => {

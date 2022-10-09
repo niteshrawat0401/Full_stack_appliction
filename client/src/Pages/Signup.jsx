@@ -18,6 +18,7 @@ export const Signup = () => {
     const { name, value } = e.target;
     setSignData({ ...signData, [name]: value });
   };
+  // .post data
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
