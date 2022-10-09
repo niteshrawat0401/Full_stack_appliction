@@ -43,4 +43,15 @@ authRouter.post("/login", async (req, res) => {
   return res.status(201).send({ message: "Vaild User", token : token, refreshToken: refreshToken,_id });
 });
 
+authRouter.post("/newToken", (req,res)=>{
+  const refreshToken = req.headers["authorization"].split(" ")[0];
+  const validation= jwt.verify(refreshToken, "REFRESHPASSWORD");
+  if(validation){
+    const newPrimaryToken = jwt.sign({userName}, "SECRET", {
+      expiresIn : "1 hour"
+    })
+    return res. send({ token:newPrimaryToken})
+  }
+})
+
 module.exports = authRouter;
