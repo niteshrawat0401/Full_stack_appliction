@@ -25,7 +25,22 @@ authRouter.post("/login", async (req, res) => {
   if (vaildUser.length < 1 || !vaildUser) {
     return res.status(401).send({ message: "Invalid credentials" });
   }
-  return res.status(201).send({ message: "Vaild User" });
+  // token 1
+  const token = jwt.sign({
+    userName
+  },
+  "SECRET",{
+    expiresIn: "1 hour"
+  })
+  // token 2
+  const refreshToken = jwt.sign({
+    userName
+  },
+  "REFRESHPASSWORD",{
+    expiresIn : "30days"
+  })
+  let {_id} = vaildUser[0]
+  return res.status(201).send({ message: "Vaild User", token : token, refreshToken: refreshToken,_id });
 });
 
 module.exports = authRouter;
