@@ -24,3 +24,28 @@
   background-color: #00264a;
   color: white;
 }
+
+.mapdiv{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 2%;
+  justify-content: center;
+  color: rgb(54, 52, 52);
+  padding: 2% 5%;
+  
+}
+
+.card{
+  border: 1px solid;
+  box-shadow: 2px 1px 2px 1px grey ;
+  padding: 2% 1% 5% 1%;
+}
+.card >img{
+  width: auto;
+}
+.card >button{
+  padding: 1% 2%;
+  border-radius: 6px;
+  background-color: yellowgreen;
+  color: white;
+}

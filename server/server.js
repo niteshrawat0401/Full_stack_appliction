@@ -19,7 +19,9 @@ app.use("/user", userRouter)
 
 app.get("/", (req, res) => res.send("Hello Nitesh"));
 
-app.listen(8080, async () => {
+const PORT = process.env.PORT || 8080
+
+app.listen(PORT, async () => {
   connect;
   console.log("Server started on http://localhost:8080");
 });
