@@ -28,10 +28,15 @@ export const Navbar = () => {
             <Link to={"/product"}>Product</Link>
             <Link to={"/cart"}>Cart</Link>
             {pvtroute === null ? (
-              <h3 onClick={() => navigate("/login")}>Login in</h3>
+              <h3
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate("/login")}
+              >
+                Login in
+              </h3>
             ) : (
-              <h3 onClick={logout}>
-                Lorout<span>{pvtroute.username}</span>
+              <h3 style={{ cursor: "pointer" }} onClick={logout}>
+                Logout<span>{pvtroute.username}</span>
               </h3>
             )}
             <button onClick={dark}>Dark Theme</button>

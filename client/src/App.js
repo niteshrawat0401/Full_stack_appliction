@@ -7,6 +7,7 @@ import { Home } from "./Home/Home";
 import { Navbar } from "./Home/Navbar";
 import { useState } from "react";
 import { Cart } from "./Cart/Cart";
+import { Detail } from "./Pages/Detail";
 
 const PrivateRoute = ({ isAuthenticated, ...props }) => {
   return isAuthenticated ? (
@@ -25,27 +26,26 @@ function App() {
 
   return (
     <div className="App">
-     
-        <Navbar />
-        <Routes>
-          <Route
-            path="/login"
-            element={<Login isUserisAuthenticated={isUserisAuthenticated} />}
-          />
+      <Navbar />
+      <Routes>
+        <Route
+          path="/login"
+          element={<Login isUserisAuthenticated={isUserisAuthenticated} />}
+        />
 
-          <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
 
-          <Route
-            path="/cart"
-            element={<PrivateRoute isAuthenticated={isAuthenticated} />}
-            /* if isAuthenticated is true then open cart page */
-          >
-            <Route path="/cart" element={<Cart />} />
-          </Route>
+        <Route
+          path="/cart"
+          element={<PrivateRoute isAuthenticated={isAuthenticated} />}
+          /* if isAuthenticated is true then open cart page */
+        >
+          <Route path="/cart" element={<Cart />} />
+        </Route>
 
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-  
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/detail" element={<Detail />} />
+      </Routes>
     </div>
   );
 }

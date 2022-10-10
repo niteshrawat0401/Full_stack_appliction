@@ -114,6 +114,18 @@ export const Home = () => {
   }
   useEffect(() => {}, [filtered]);
 
+  // Detail
+  function details(e){
+    axios.post(`https://mock-assignment.herokuapp.com/users`, e)
+    .then((res)=>{
+      navigate("/detail")
+    })
+    .catch((e)=>{
+      console.log(e.message);
+    })
+
+  }
+
   return (
     <>
       <div className="whole_container">
@@ -225,7 +237,7 @@ export const Home = () => {
             <h3>Gender : {ele.gender}</h3>
             <h3>Age : {ele.age}</h3>
             <button onClick={() => deleteData(ele._id)}>Remove</button>
-            <button>Details</button>
+            <button onClick={()=>details(ele)}>Details</button>
           </div>
         ))}
       </div>
