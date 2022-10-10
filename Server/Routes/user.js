@@ -20,6 +20,16 @@ userRouter.get("/:userid/student", async(req,res)=>{
     res.send(userPro);
 })
 
-
+userRouter.delete("/:userid/student/:studentId", async(req,res)=>{
+    const userid= req.params.userid
+    const productId= req.params.studentId
+    const product= await userprofile.deleteOne({_id: productId, userid: userid})
+    .then(result =>{
+        return res.status(201).send({message: "Deleted Successfully"})
+    })
+    .catch(err =>{
+        return res.status(401).send({message: "Something went wrong"})
+    })
+})
 
 module.exports= userRouter;
