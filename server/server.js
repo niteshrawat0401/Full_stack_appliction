@@ -1,5 +1,6 @@
 const express = require("express");
 const authRouter = require("./Routes/auth");
+const userRouter = require("./Routes/user")
 const connect = require("./db/db");
 const cors = require("cors");
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/auth", authRouter);
+app.use("/user", userRouter)
 
 app.get("/", (req, res) => res.send("Hello Nitesh"));
 
