@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 let initialdata = {
@@ -17,67 +17,107 @@ export const Home = () => {
   const [signupdata, setSignupdata] = useState(initialdata);
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const [sorted, setSorted] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filtered, setFiltered] = useState("");
 
-  const handleChange= ((e)=>{
-    const {name, value} = e.target;
-    setSignupdata({ ...signupdata, [name]: value});
-  })
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setSignupdata({ ...signupdata, [name]: value });
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getdata();
-  },[])
+  }, []);
 
-  const submit = (e)=>{
+  const submit = (e) => {
     e.preventDefault();
     let pvtroute = JSON.parse(localStorage.getItem("pvtroute"));
-    let userid= pvtroute.userid;
+    let userid = pvtroute.userid;
     console.log(pvtroute);
 
-    axios.post(`http://localhost:8080/user/${userid}/student`,{
-      ...signupdata,
-      userid,
-    })
-    .then((res)=>{
-      getdata();
-      setSignupdata({...initialdata});
-    })
-    .catch((e)=> console.log(e))
-    
-  }
+    axios
+      .post(`http://localhost:8080/user/${userid}/student`, {
+        ...signupdata,
+        userid,
+      })
+      .then((res) => {
+        getdata();
+        setSignupdata({ ...initialdata });
+      })
+      .catch((e) => console.log(e));
+  };
 
   // get request
-  function getdata(){
-    let pvtroute= JSON.parse(localStorage.getItem("pvtroute")) || []
+  function getdata() {
+    let pvtroute = JSON.parse(localStorage.getItem("pvtroute")) || [];
     let id = pvtroute.userid;
-    axios.get(`http://localhost:8080/user/${id}/student?userid=${id}`)
-    .then((res)=>{
-      setData(res.data);
-      console.log("productArr", res.data);
-    })
-    .catch((e)=>{
-      console.log(e);
-    })
+    axios
+      .get(`http://localhost:8080/user/${id}/student?userid=${id}`)
+      .then((res) => {
+        setData(res.data);
+        console.log("productArr", res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+  // delete req
+  function deleteData(proid) {
+    let pvtroute = JSON.parse(localStorage.getItem("pvtroute")) || [];
+    let id = pvtroute.userid;
+    axios
+      .delete(`http://localhost:8080/user/${id}/student/${proid}`)
+      .then((res) => {
+        getdata();
+        console.log("deleted", res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  function deleteData(proid){
-    let pvtroute = JSON.parse(localStorage.getItem("pvtroute")) || []
-    let id = pvtroute.userid;
-    axios.delete(
-      `http://localhost:8080/user/${id}/student/${proid}`
-    )
-    .then((res)=>{
-      getdata();
-      console.log("deleted",res);
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
+  // sort
+  function handleSort(e) {
+    setSorted(e.target.value);
+    let sortvalue = e.target.value;
+    if (sortvalue === "") {
+      setData(data);
+    } else {
+      if (sortvalue === "l2h") {
+        let arr = data.sort((a, b) => Number(a.age) - Number(b.age));
+        setData(arr);
+      }
+      if (sortvalue === "h2l") {
+        let arr1 = data.sort((a, b) => Number(b.age) - Number(a.age));
+        setData(arr1);
+      }
+    }
   }
+  useEffect(() => {}, [sorted]);
+
+  // filtered
+  function filtervalue(e) {
+    let pvtroute = JSON.parse(localStorage.getItem("pvtroute")) || [];
+    let id = pvtroute.userid;
+    axios
+      .get(
+        `https://rahulsingh-mockapi.herokuapp.com/user/${id}/student?gender=${e.target.value}`
+      )
+      .then((res) => {
+        setData(res.data);
+
+        setFiltered(e.target.value);
+        console.log(res.data);
+      })
+      .catch((e) => console.log(e));
+  }
+  useEffect(() => {}, [filtered]);
 
   return (
     <>
       <div className="whole_container">
-      <form onSubmit={submit} className="signup_form">
+        <form onSubmit={submit} className="signup_form">
           <h5>Student Name</h5>
           <input
             type="text"
@@ -154,19 +194,40 @@ export const Home = () => {
           <input className="signupbutton" type="submit" value="SUBMIT" />
         </form>
       </div>
+      <div className="sortDiv">
+        <select
+          style={{ width: "150px", height: "50px", borderRadius: "12px" }}
+          id="sortvalue"
+          onChange={handleSort}
+        >
+          <option value="">Sort by Age</option>
+          <option value="l2h">Low to High</option>
+          <option value="h2l">High to Low</option>
+        </select>
+      </div>
+      <div className="sortDiv">
+        <select
+          style={{ width: "150px", height: "50px", borderRadius: "12px" }}
+          id="sortvalue"
+          onChange={filtervalue}
+        >
+          <option>Sort by Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Unspecified">Unspecified</option>
+        </select>
+      </div>
       <div className="mapdiv">
-        {
-          data.map((ele)=>(
-            <div className="card" key={ele._id}>
+        {data.map((ele) => (
+          <div className="card" key={ele._id}>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWKKLQgDiE8Oth8mH061jIZydyHoEj0jEpfQ&usqp=CAU" />
             <h3>Name : {ele.name}</h3>
             <h3>Gender : {ele.gender}</h3>
             <h3>Age : {ele.age}</h3>
-            <button onClick={()=>deleteData(ele._id)}>Remove</button>
+            <button onClick={() => deleteData(ele._id)}>Remove</button>
             <button>Details</button>
-            </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
     </>
   );
