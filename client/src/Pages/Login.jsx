@@ -38,13 +38,20 @@ export const Login = ({ isUserisAuthenticated, logout, setLogout }) => {
     axios
       .post(`http://localhost:8080/auth/login`, loginData)
       .then((res) => {
-        console.log(res.data);
+        localStorage.setItem("pvtroute", JSON.stringify({
+          isUserisAuthenticated:true,
+          userid: res.data._id,
+          token:res.data.token,
+          name: loginData.name,
+          userName:loginData.userName,
+          
+        }))
         setLoginData({ ...initData });
         setAlert(true);
         setTimeout(() => {
           setAlert(false);
 
-          isUserisAuthenticated(true);
+          // isUserisAuthenticated(true);
           if (dispatch({ type: "USER", payload: true })) {
             navigate("/");
           }
