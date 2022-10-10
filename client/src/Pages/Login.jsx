@@ -41,7 +41,6 @@ export const Login = ({ isUserisAuthenticated }) => {
           isUserisAuthenticated:true,
           userid: res.data._id,
           token: res.data.token,
-          name: loginData.name,
           userName: loginData.userName,
 
         }))
