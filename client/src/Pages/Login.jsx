@@ -5,7 +5,6 @@ import "./style.module.css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import eyeimg1 from "./eyeimage/eyeimg1.jpeg";
 import eyeimg2 from "./eyeimage/eyeimg2.jpeg";
-import { UserContext } from "../App";
 
 import {
   Alert,
@@ -19,12 +18,11 @@ let initData = {
   passWord: "",
 };
 
-export const Login = ({ isUserisAuthenticated, logout, setLogout }) => {
+export const Login = ({ isUserisAuthenticated }) => {
   const [loginData, setLoginData] = useState(initData);
   const [alert, setAlert] = useState(false);
   const [invalidalert, setInvalidalert] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const { state, dispatch } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -38,23 +36,22 @@ export const Login = ({ isUserisAuthenticated, logout, setLogout }) => {
     axios
       .post(`http://localhost:8080/auth/login`, loginData)
       .then((res) => {
+        console.log(res.data);
         localStorage.setItem("pvtroute", JSON.stringify({
           isUserisAuthenticated:true,
           userid: res.data._id,
-          token:res.data.token,
+          token: res.data.token,
           name: loginData.name,
-          userName:loginData.userName,
-          
+          userName: loginData.userName,
+
         }))
         setLoginData({ ...initData });
         setAlert(true);
         setTimeout(() => {
           setAlert(false);
+          navigate("/")
 
-          // isUserisAuthenticated(true);
-          if (dispatch({ type: "USER", payload: true })) {
-            navigate("/");
-          }
+          isUserisAuthenticated(true);
         }, 2000);
       })
       .catch((err) => {

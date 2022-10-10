@@ -5,9 +5,8 @@ import { Login } from "./Pages/Login";
 import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import { Home } from "./Home/Home";
 import { Navbar } from "./Home/Navbar";
-import { createContext, useReducer, useState } from "react";
+import { useState } from "react";
 import { Cart } from "./Cart/Cart";
-import { initialState,reducer } from "./reducer/Usereucer";
 
 const PrivateRoute = ({ isAuthenticated, ...props }) => {
   return isAuthenticated ? (
@@ -19,16 +18,14 @@ const PrivateRoute = ({ isAuthenticated, ...props }) => {
     <Navigate replace to="/login" />
   );
 };
-export const UserContext = createContext();
+
 function App() {
   const [isAuthenticated, isUserisAuthenticated] = useState();
   const [logout, setLogout] = useState(false);
-  
-  const [state, dispatch]= useReducer(reducer, initialState)
 
   return (
     <div className="App">
-      <UserContext.Provider value={{state, dispatch}}>
+     
         <Navbar />
         <Routes>
           <Route
@@ -48,7 +45,7 @@ function App() {
 
           <Route path="/signup" element={<Signup />} />
         </Routes>
-      </UserContext.Provider>
+  
     </div>
   );
 }
