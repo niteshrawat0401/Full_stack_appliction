@@ -31,7 +31,7 @@ userRouter.delete("/:userid/student/:studentId", async (req, res) => {
       return res.status(201).send({ message: "Deleted Successfully" });
     })
     .catch((err) => {
-      return res.status(401).send({ message: "Something went wrong" });
+      return res.status(401).send({ message: "Something went Wrong" });
     });
 });
 
