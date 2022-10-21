@@ -27,7 +27,7 @@ export const Signup = () => {
         console.log("data", res.data);
 
         setSignData({ ...initialObj });
-        alert("Sign in Successfull");
+        alert("Sign In Successfull");
         navigate("/login");
       })
       .catch((e) => console.log(e));
