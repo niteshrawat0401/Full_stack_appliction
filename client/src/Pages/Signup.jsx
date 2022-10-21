@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "./style.module.css/Signup.css";
 
-let initObj = {
+let initialObj = {
   userName: "",
   passWord: "",
   email: "",
@@ -12,7 +12,7 @@ let initObj = {
 };
 
 export const Signup = () => {
-  const [signData, setSignData] = useState(initObj);
+  const [signData, setSignData] = useState(initialObj);
   const navigate = useNavigate();
   const handleonChange = (e) => {
     const { name, value } = e.target;
@@ -26,7 +26,7 @@ export const Signup = () => {
       .then((res) => {
         console.log("data", res.data);
 
-        setSignData({ ...initObj });
+        setSignData({ ...initialObj });
         alert("Sign in Successfull");
         navigate("/login");
       })
