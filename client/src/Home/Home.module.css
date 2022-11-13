@@ -1,24 +1,28 @@
-.whole_container{
-    height: 29rem;
-    width: 20%;
-    margin: auto;
-    margin-top: 1.5rem;
-    box-shadow: 0px 0px 5px 0px grey;
-    border-radius: 5px;
+.whole_container {
+  height: 29rem;
+  width: 20%;
+  margin: auto;
+  margin-top: 1rem;
+  box-shadow: 0px 0px 5px 0px grey;
+  border-radius: 5px;
 }
 
-input{
-    border: 1px solid gray;
-    width: 90%;
-    height: 2rem;
-    border-radius: 5px;
-    
+input {
+  border: 1px solid gray;
+  width: 90%;
+  height: 2rem;
+  border-radius: 5px;
 }
 
-.signupbutton{
-margin-top: 1rem;
-height: 2.5rem;
-background-color: #4255a4;
-color: white;
-cursor: pointer;
+.signupbutton {
+  margin-top: 1rem;
+  height: 2.5rem;
+  background-color: #4255a4;
+  color: white;
+  cursor: pointer;
 }
+.sort_filter {
+  display: flex;
+  justify-content: space-around;
+}
+

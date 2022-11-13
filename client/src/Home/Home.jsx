@@ -207,7 +207,8 @@ export const Home = () => {
           <input className={styles.signupbutton} type="submit" value="Submit" />
         </form>
       </div>
-      <div className="sortDiv">
+      <div className={styles.sort_filter}>
+      <div className={styles.sortDiv}>
         <select
           style={{ width: "150px", height: "50px", borderRadius: "12px" }}
           id="sortvalue"
@@ -230,9 +231,10 @@ export const Home = () => {
           <option value="Unspecified">Unspecified</option>
         </select>
       </div>
+      </div>
       <div className="mapdiv">
         {data.map((ele) => (
-          <div className="card" key={ele._id}>
+          <div className={styles.card} key={ele._id}>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWKKLQgDiE8Oth8mH061jIZydyHoEj0jEpfQ&usqp=CAU" />
             <h3>Name : {ele.name}</h3>
             <h3>Gender : {ele.gender}</h3>
