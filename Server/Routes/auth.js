@@ -22,7 +22,7 @@ authRouter.post("/signup", (req, res) => {
 authRouter.post("/login", async (req, res) => {
   const { userName, passWord } = req.body;
   const vaildUser = await User.find({ userName, passWord });
-  console.log(vaildUser);
+  // console.log(vaildUser);
   if (vaildUser.length < 1 || !vaildUser) {
     return res.status(401).send({ message: "Invalid credentials" });
   }
@@ -59,7 +59,9 @@ authRouter.post("/login", async (req, res) => {
 
 authRouter.post("/newToken", (req, res) => {
   const refreshToken = req.headers["authorization"].split(" ")[0];
+
   const validation = jwt.verify(refreshToken, "REFRESHPASSWORD");
+  
   if (validation) {
     const newPrimaryToken = jwt.sign({ userName }, "SECRET", {
       expiresIn: "1 hour",
