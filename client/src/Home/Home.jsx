@@ -209,37 +209,37 @@ export const Home = () => {
       </div>
       <div className={styles.sort_filter}>
       <div className={styles.sortDiv}>
-        <select
-          style={{ width: "150px", height: "50px", borderRadius: "12px" }}
+        <select className={styles.sort}
+          style={{ width: "170px", height: "40px", borderRadius: "8px" }}
           id="sortvalue"
           onChange={handleSort}
         >
-          <option value="">Sort by Age</option>
+          <option value="">Sort by age</option>
           <option value="l2h">Low to High</option>
           <option value="h2l">High to Low</option>
         </select>
       </div>
       <div className="sortDiv">
         <select
-          style={{ width: "150px", height: "50px", borderRadius: "12px" }}
+          style={{ width: "170px", height: "40px", borderRadius: "8px", background:"#b5bfbf",}}
           id="sortvalue"
           onChange={filtervalue}
         >
-          <option>Sort by Gender</option>
+          <option>Filter by gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Unspecified">Unspecified</option>
         </select>
       </div>
       </div>
-      <div className="mapdiv">
+      <div className="mapdiv" >
         {data.map((ele) => (
-          <div className={styles.card} key={ele._id}>
+          <div className="card" key={ele._id}>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWKKLQgDiE8Oth8mH061jIZydyHoEj0jEpfQ&usqp=CAU" />
             <h3>Name : {ele.name}</h3>
             <h3>Gender : {ele.gender}</h3>
             <h3>Age : {ele.age}</h3>
-            <button onClick={() => deleteData(ele._id)}>Remove</button>
+            <button style={{marginRight: "70px"}} onClick={() => deleteData(ele._id)}>Remove</button>
             <button onClick={()=>details(ele)}>Details</button>
           </div>
         ))}
