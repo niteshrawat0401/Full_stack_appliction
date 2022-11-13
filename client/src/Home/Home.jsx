@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import styles from "./Home.module.css"
 
 let initialdata = {
   name: "",
@@ -128,7 +129,7 @@ export const Home = () => {
 
   return (
     <>
-      <div className="whole_container">
+      <div className={styles.whole_container}>
         <form onSubmit={submit} className="signup_form">
           <h5>Student Name</h5>
           <input
@@ -203,7 +204,7 @@ export const Home = () => {
             required
           />
           <br />
-          <input className="signupbutton" type="submit" value="SUBMIT" />
+          <input className={styles.signupbutton} type="submit" value="Submit" />
         </form>
       </div>
       <div className="sortDiv">

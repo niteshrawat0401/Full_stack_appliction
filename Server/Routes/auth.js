@@ -22,6 +22,7 @@ authRouter.post("/signup", (req, res) => {
 authRouter.post("/login", async (req, res) => {
   const { userName, passWord } = req.body;
   const vaildUser = await User.find({ userName, passWord });
+  console.log(vaildUser);
   if (vaildUser.length < 1 || !vaildUser) {
     return res.status(401).send({ message: "Invalid credentials" });
   }
