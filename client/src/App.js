@@ -8,6 +8,7 @@ import { Navbar } from "./Home/Navbar";
 import { useState } from "react";
 import { Cart } from "./Cart/Cart";
 import { Detail } from "./Pages/Detail";
+import { Show } from "@chakra-ui/react";
 
 const PrivateRoute = ({ isAuthenticated, ...props }) => {
   return isAuthenticated ? (
@@ -36,11 +37,11 @@ function App() {
         <Route path="/" element={<Home />} />
 
         <Route
-          path="/cart"
+          path="/show"
           element={<PrivateRoute isAuthenticated={isAuthenticated} />}
           /* if isAuthenticated is true then open cart page */
         >
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/show" element={<Show/>} />
         </Route>
 
         <Route path="/signup" element={<Signup />} />

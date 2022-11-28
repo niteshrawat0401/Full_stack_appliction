@@ -35,7 +35,7 @@ export const Signup = () => {
   return (
     <div>
       <div className="signup_main_cont">
-        <h1 style={{ fontWeight: "bold",paddingTop:"1rem" }}>Sign up</h1>
+        <h1 style={{ fontWeight: "bold",fontSize:"21px",paddingTop:"2rem" }}>Sign up</h1>
         <form onSubmit={handleSubmit}>
           <input
             className="inp1"
@@ -79,7 +79,7 @@ export const Signup = () => {
           <br />
           <input className="inp5" type="submit" value="Sign UP" />
         </form>
-        <div style={{ paddingTop: "2px" }}>
+        <div style={{ paddingTop: "2px",marginTop: "8px" }}>
           <span>Already have account </span>
           <Link style={{ color: "blue", fontSize: "15px" }} to={"/login"}>
             Login

@@ -25,8 +25,7 @@ export const Navbar = () => {
         <div className="navbar_div">
       
             <Link to={"/"}>Home</Link>
-            <Link to={"/product"}>Product</Link>
-            <Link to={"/cart"}>Cart</Link>
+            <Link to={"/show"}>Cart</Link>
             {pvtroute === null ? (
               <h3
                 style={{ cursor: "pointer" }}
