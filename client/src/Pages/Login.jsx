@@ -37,18 +37,20 @@ export const Login = ({ isUserisAuthenticated }) => {
       .post(`http://localhost:8080/auth/login`, loginData)
       .then((res) => {
         console.log(res.data);
-        localStorage.setItem("pvtroute", JSON.stringify({
-          isUserisAuthenticated:true,
-          userid: res.data._id,
-          token: res.data.token,
-          userName: loginData.userName,
-
-        }))
+        localStorage.setItem(
+          "pvtroute",
+          JSON.stringify({
+            isUserisAuthenticated: true,
+            userid: res.data._id,
+            token: res.data.token,
+            userName: loginData.userName,
+          })
+        );
         setLoginData({ ...initData });
         setAlert(true);
         setTimeout(() => {
           setAlert(false);
-          navigate("/")
+          navigate("/");
 
           isUserisAuthenticated(true);
         }, 2000);
@@ -67,7 +69,11 @@ export const Login = ({ isUserisAuthenticated }) => {
     <div>
       <div className="login_main_container">
         <form onSubmit={handleLogin}>
-          <h3 style={{ fontWeight: "bold" , paddingTop:"2rem", fontSize:"21px" }}>Login</h3>
+          <h2
+            style={{ fontWeight: "bold", paddingTop: "2rem", fontSize: "21px" }}
+          >
+            Login
+          </h2>
           <input
             className="inpu1"
             type="text"
@@ -102,16 +108,17 @@ export const Login = ({ isUserisAuthenticated }) => {
           <br />
           <input className="inpu3" type="submit" value="Login" />
         </form>
-        <div style={{ paddingTop: "2px",marginTop:"5px" }}>
+        <div style={{ paddingTop: "2px", marginTop: "8px" }}>
           <span>Create a new account </span>
-          <Link style={{ color: "blue" ,fontSize: "16px" }} to={"/signup"}>
+          <Link style={{ color: "blue", fontSize: "16px" }} to={"/signup"}>
             Sign up
           </Link>
         </div>
 
-        <div style={{ marginTop: "1.5rem" }}>
+        <div style={{ marginTop: "3.2rem" }}>
           {alert ? (
             <Alert
+              style={{ border: "1px solid red", height: "5rem" }}
               status="success"
               variant="subtle"
               flexDirection="column"

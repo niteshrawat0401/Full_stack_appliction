@@ -23,7 +23,7 @@ export const Navbar = () => {
       <GlobalStyles />
       <div>
         <div className="navbar_div">
-          <>
+      
             <Link to={"/"}>Home</Link>
             <Link to={"/product"}>Product</Link>
             <Link to={"/cart"}>Cart</Link>
@@ -40,7 +40,7 @@ export const Navbar = () => {
               </h3>
             )}
             <button onClick={dark}>Dark Theme</button>
-          </>
+        
         </div>
       </div>
     </ThemeProvider>
