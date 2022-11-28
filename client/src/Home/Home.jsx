@@ -239,8 +239,10 @@ export const Home = () => {
             <h3>Name : {ele.name}</h3>
             <h3>Gender : {ele.gender}</h3>
             <h3>Age : {ele.age}</h3>
-            <button style={{marginRight: "70px"}} onClick={() => deleteData(ele._id)}>Remove</button>
+            <div className="del_detail">
+            <button style={{marginRight: "70px"}} onClick={() => deleteData(ele._id)}>Delete</button>
             <button onClick={()=>details(ele)}>Details</button>
+            </div>
           </div>
         ))}
       </div>

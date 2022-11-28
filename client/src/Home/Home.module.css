@@ -26,12 +26,11 @@ input {
   justify-content: space-around;
 }
 
-.sort{
-    background-color: #b5bfbf;
-    
+.sort {
+  background-color: #b5bfbf;
 }
 
-@media all and (min-width:392px) and (max-width:588px){
+@media all and (min-width: 392px) and (max-width: 588px) {
   .whole_container {
     height: 29rem;
     width: 85%;
@@ -40,5 +39,13 @@ input {
     box-shadow: 0px 0px 5px 0px grey;
     border-radius: 5px;
   }
-  
+  .sort_filter {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .sort {
+    background-color: #b5bfbf;
+  }
 }
