@@ -67,7 +67,7 @@ export const Login = ({ isUserisAuthenticated }) => {
     <div>
       <div className="login_main_container">
         <form onSubmit={handleLogin}>
-          <h3 style={{ fontWeight: "bold" }}>Login</h3>
+          <h3 style={{ fontWeight: "bold" , paddingTop:"2rem", fontSize:"21px" }}>Login</h3>
           <input
             className="inpu1"
             type="text"
@@ -102,9 +102,9 @@ export const Login = ({ isUserisAuthenticated }) => {
           <br />
           <input className="inpu3" type="submit" value="Login" />
         </form>
-        <div style={{ paddingTop: "2px" }}>
+        <div style={{ paddingTop: "2px",marginTop:"5px" }}>
           <span>Create a new account </span>
-          <Link style={{ color: "blue", fontSize: "15px" }} to={"/signup"}>
+          <Link style={{ color: "blue" ,fontSize: "16px" }} to={"/signup"}>
             Sign up
           </Link>
         </div>
