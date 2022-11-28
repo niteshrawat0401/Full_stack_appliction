@@ -118,7 +118,7 @@ export const Login = ({ isUserisAuthenticated }) => {
         <div style={{ marginTop: "3.2rem" }}>
           {alert ? (
             <Alert
-              style={{ border: "1px solid red", height: "5rem" }}
+              style={{ height: "5rem" }}
               status="success"
               variant="subtle"
               flexDirection="column"

@@ -1,6 +1,7 @@
 .signup_main_cont {
-  box-shadow: 2px 1px 2px 1px;
-  height: 24rem;
+  background-color: #eff8ff;
+  box-shadow: 0px 0px 5px 1px gray;
+  height: 27rem;
   width: 20%;
   margin: auto;
   margin-top: 3rem;
