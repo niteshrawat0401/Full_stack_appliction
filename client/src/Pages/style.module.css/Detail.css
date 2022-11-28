@@ -41,3 +41,41 @@ table {
   font-size: 0.9rem;
   border-collapse: collapse;
 }
+
+@media all and (min-width: 392px) and (max-width: 588px) {
+  .table_for_students {
+    width: 100%;
+    margin: auto;
+    margin-top: 5rem;
+  }
+  tbody,
+th,
+td {
+  border: 1px solid rgb(190, 190, 190);
+}
+thead {
+  height: 36px;
+  background-color: #4255a4;
+  color: white;
+}
+td {
+  text-align: center;
+  border: 1px solid rgb(190, 190, 190);
+}
+th {
+  /* padding: 5px 10px; */
+  border: 1px solid rgb(190, 190, 190);
+}
+table {
+  /* border: 1px solid red; */
+  border: 2px solid rgb(200, 200, 200);
+  height: 60px;
+  justify-content: center;
+  margin: auto;
+  width: 80%;
+  letter-spacing: 1px;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  border-collapse: collapse;
+}
+}
