@@ -4,7 +4,18 @@ const { Router } = require("express");
 const userRouter = Router();
 
 userRouter.post("/:userid/student", (req, res) => {
-  const userPro = new userprofile(req.body);
+  const { userid } = req.params;
+  const { name, gender, age, testname, subject, marks, date } = req.body;
+  const userPro = new userprofile({
+    name,
+    gender,
+    age,
+    testname,
+    subject,
+    marks,
+    date,
+    userid: userid,
+  });
   userPro.save((err, success) => {
     try {
       return res
